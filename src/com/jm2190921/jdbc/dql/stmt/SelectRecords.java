@@ -1,4 +1,4 @@
-package com.jm2190921.jdbc.dql;
+package com.jm2190921.jdbc.dql.stmt;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
