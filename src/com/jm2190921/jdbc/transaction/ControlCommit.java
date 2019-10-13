@@ -11,7 +11,7 @@ public class ControlCommit {
 
 	public static void main(String[] args) {
 		try {
-			Connection con = DbUtil.getCon();
+			Connection con = DbUtil.getConByReadingPropFile();
 
 			con.setAutoCommit(false);
 
