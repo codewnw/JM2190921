@@ -2,6 +2,7 @@ package com.jm2190921.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,30 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/greet-me")
-public class GreetMeServlet extends HttpServlet {
+@WebServlet("/date")
+public class DateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public GreetMeServlet() {
+	public DateServlet() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doGet of GreetMeServlet");
-		String un = request.getParameter("username");
-		System.out.println("Hello, " + un);
-		PrintWriter out = response.getWriter();
-		out.print("Hey, " + un + " from doGet");
+		request.setAttribute("date", LocalDate.now());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doPost of GreetMeServlet");
-		String un = request.getParameter("username");
-		System.out.println("Hello, " + un);
-		PrintWriter out = response.getWriter();
-		out.print("Hey, " + un + " from doPost");
-
 	}
 
 }

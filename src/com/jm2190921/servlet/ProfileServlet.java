@@ -9,30 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/greet-me")
-public class GreetMeServlet extends HttpServlet {
+@WebServlet("/profile")
+public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public GreetMeServlet() {
+	public ProfileServlet() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doGet of GreetMeServlet");
-		String un = request.getParameter("username");
-		System.out.println("Hello, " + un);
-		PrintWriter out = response.getWriter();
-		out.print("Hey, " + un + " from doGet");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doPost of GreetMeServlet");
+		System.out.println("doPost of ProfileServlet");
+		response.setContentType("text/HTML");
 		String un = request.getParameter("username");
-		System.out.println("Hello, " + un);
 		PrintWriter out = response.getWriter();
-		out.print("Hey, " + un + " from doPost");
-
+		out.print("Hello, " + un);
+		out.print("<br>");
+		out.print(request.getAttribute("loginMsg").toString());
+		out.print("<br>");
+		out.print("This is your profile.");
 	}
 
 }
