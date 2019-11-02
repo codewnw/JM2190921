@@ -9,32 +9,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/profile")
-public class ProfileServlet extends HttpServlet {
+@WebServlet("/show-detail")
+public class ShowDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ProfileServlet() {
+	public ShowDetailServlet() {
+		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.sendRedirect("show-detail-form.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doPost of ProfileServlet");
 		response.setContentType("text/HTML");
 		
-		request.removeAttribute("temp");
-		request.setAttribute("from", "This is from ProfileServlet");
-		
-		String un = request.getParameter("username");
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
+		String email = request.getParameter("email");
+
 		PrintWriter out = response.getWriter();
-		out.print("Hello, " + un);
-		out.print("<br>");
-		out.print(request.getAttribute("loginMsg").toString());
-		out.print("<br>");
-		out.print("This is your profile.");
+		out.print("<table border=\"1px\">\r\n" + 
+				"		<tr>\r\n" + 
+				"			<td>Name</td>\r\n" + 
+				"			<td>"+name+"</td>\r\n" + 
+				"		</tr>\r\n" + 
+				"		<tr>\r\n" + 
+				"			<td>Age</td>\r\n" + 
+				"			<td>"+age+"</td>\r\n" + 
+				"		</tr>\r\n" + 
+				"		<tr>\r\n" + 
+				"			<td>Email</td>\r\n" + 
+				"			<td>"+email+"</td>\r\n" + 
+				"		</tr>\r\n" + 
+				"	</table>");
 	}
 
 }

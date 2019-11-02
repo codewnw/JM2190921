@@ -40,6 +40,8 @@ public class LoginServlet extends HttpServlet {
 
 			if (un.equals(pass)) {
 				request.setAttribute("loginMsg", "Login Successfull!!!");
+				request.setAttribute("temp", "This is temp.");
+				request.setAttribute("from", "This is from LoginServlet");
 				RequestDispatcher rd = request.getRequestDispatcher("profile");
 				rd.forward(request, response);
 			} else {
