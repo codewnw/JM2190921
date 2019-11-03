@@ -1,3 +1,4 @@
+<%@ page import="com.jm2190921.model.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +9,19 @@
 	<table border="1px">
 		<tr>
 			<td>Name</td>
-			<td><%= request.getParameter("name") %></td>
+			<td><%= ((User)request.getAttribute("user")).getName() %></td>
 		</tr>
 		<tr>
 			<td>Age</td>
-			<td><%= request.getParameter("age") %></td>
+			<td>${requestScope.user.age}</td>
 		</tr>
 		<tr>
 			<td>Email</td>
 			<td><%= request.getParameter("email") %></td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td><%= request.getParameter("type") %></td>
 		</tr>
 	</table>
 
